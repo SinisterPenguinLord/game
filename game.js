@@ -56,7 +56,7 @@ function loadImages(callback) {
     }
 }
 
-let keys = {w: false, a: false, s: false, d: false};
+let keys = {w: false, a: false, s: false, d: false, ArrowUp: false, ArrowLeft:false, ArrowDown:false, ArrowRight:false};
 window.onkeydown = function(event) {
     if (keys.hasOwnProperty(event.key)) {
         if (!event.repeat) {
@@ -160,8 +160,8 @@ var player = {
 	},
 	
 	move: function() {
-		let hor = keys.d - keys.a;
-        let ver = keys.s - keys.w;
+		let hor = keys.d + keys.ArrowRight - keys.a - keys.ArrowLeft;
+        let ver = keys.s + keys.ArrowDown - keys.w - keys.ArrowUp;
 		
 
         let mag = Math.hypot(hor, ver);
